@@ -1,65 +1,45 @@
 # vscode-ipython-console README
 
-This is the README for your extension "vscode-ipython-console". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Run Python code in an IPython console embedded in VSCode. Extension. Supports only Windows at the moment, and requires AutoHotKey installed. Tested to work on a Miniconda3 installation. But any configuration that allows you to use IPython should work.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Windows 10 is the only OS currently supported.
+- IPython.
 
-## Extension Settings
+## Installation
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+1. Clone this repo to the VS code extension folder (i.e. %userprofile%\.vscode\extensions)
+2. Install AutoHotKey
 
-For example:
+## Recommendations
 
-This extension contributes the following settings:
+Disable console blocking due to opened Matplotlib figures: 
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+1. Navigate to %userprofile%\.ipython\profile_default\startup
+2. Make a new file called "start.ipy" with the following content: %matplotlib qt5
+
+## Usage
+
+1. Open your Python project in VSCode.
+2. Run the command "vscode-ipython-console: Initialize relevant consoles" by searching that command inside CTRL + SHIFT + P.
+   1. (Tip: Make hotkey for this in Preferences > keyboard shortcuts).
+   2. This will open two consoles: One for IPython, and another for AutoHotKey.
+3. Get IPython console in focus (should be by default).
+4. Open your IPython console by i.e. activate Python environment and opening IPython.
+   1. This is a manual process since it's difficult to automate this to work for all Python setups.
+5. Open a Python script and keep the script active (active cursor).
+6. Run the command "vscode-ipython-console: Run the Python file".
+   1. This should copy the filename together with a "run" command to IPython console and activate Enter command from AutoHotKey.
+
+## Notes
+
+AutoHotKey is required because passing a newline character to the IPython console results in IPython expecting more code. This is not the desired behavior as we would rather execute the code. The current, hacky, solution is to input an "Enter" keystroke by utilizing AutoHotKey. 
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
 ## Release Notes
-
-Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release of vscode-ipython-console
