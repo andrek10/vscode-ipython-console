@@ -2,7 +2,8 @@
 	"name": "vscode-ipython-console",
 	"displayName": "vscode-ipython-console",
 	"description": "Run Python files in an already-existing IPython console",
-	"version": "0.0.1",
+	"version": "1.0.0",
+	"publisher": "Andreas Klausen",
 	"engines": {
 		"vscode": "^1.45.0"
 	},
@@ -10,14 +11,19 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:vscode-ipython-console.helloWorld"
+		"onCommand:extension.startConsole",
+		"onCommand:extension.runPython"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "vscode-ipython-console.helloWorld",
-				"title": "Hello World"
+				"command": "extension.startConsole",
+				"title": "vscode-ipython-console: Initialize relevant consoles"
+			},
+			{
+				"command": "extension.runPython",
+				"title": "vscode-ipython-console: Run the Python file"
 			}
 		]
 	},
