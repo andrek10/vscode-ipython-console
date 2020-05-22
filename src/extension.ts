@@ -27,7 +27,7 @@ class CodeManager_1 {
         var filename = editor.document.fileName;
         
         //Make IPython Command
-        var ipyCom = "run ".concat(filename);
+        var ipyCom = "%run ".concat(filename);
         // var ipyCom = "execfile(r\"";
         // ipyCom = ipyCom.concat(filename);
         // ipyCom = ipyCom.concat("\");");
