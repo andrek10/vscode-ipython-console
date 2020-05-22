@@ -4,9 +4,9 @@ import * as vscode from 'vscode';
 //Class to keep terminal references, and run IPython commands
 class CodeManager_1 {
     //field - initialize constructor .this items
-    terminal
-    terminal_ahk
-    terminalsOpened
+    terminal;
+    terminal_ahk;
+    terminalsOpened;
 
     //Constructor
     constructor() {
@@ -44,16 +44,16 @@ class CodeManager_1 {
         // var a = vscode.window.showInputBox({prompt : "Close Terminal? y/n",
         //                                    ignoreFocusOut : true});
 
-        if (this.terminalsOpened == 1) {
+        if (this.terminalsOpened === 1) {
             try {
-                this.terminal_ahk.dispose()
+                this.terminal_ahk.dispose();
             }
             catch (e) {
                 console.log("Terminal ahkTerminal already closed");
             }
 
             try {
-                this.terminal.dispose()
+                this.terminal.dispose();
             }
             catch (e) {
                 console.log("Terminal IPython alreacy closed");
@@ -65,11 +65,11 @@ class CodeManager_1 {
         this.terminal_ahk = vscode.window.createTerminal("ahkTerminal");
         this.terminal_ahk.sendText("cd %HOMEPATH%", true);
         //this.terminal_ahk.sendText("cd ak-ipython\\src")
-        this.terminal_ahk.sendText("cd .vscode\\extensions\\vscode-jupyter-qtconsole\\src")
+        this.terminal_ahk.sendText("cd .vscode\\extensions\\vscode-ipython-console\\src");
 
         // Make IPython terminal
         this.terminal = vscode.window.createTerminal("IPython");
-        this.terminal.show()
+        this.terminal.show();
     }
 };
 
